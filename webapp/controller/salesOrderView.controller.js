@@ -14,12 +14,17 @@ function (Controller,JSONModel,MessageBox) {
             var oItem = oEvent.getParameter("selectedItem");
             var key = oItem.mProperties.key
             // /BusinessPartnerSet('0100000003')/ToSalesOrders
-            var entity = "/BusinessPartnerSet('" + key + "')/ToSalesOrder" 
+           // var entity = "/BusinessPartnerSet('" + key + "')/ToSalesOrders" 
+           var entity = "/BusinessPartnerSet('" + key + "')/ToSalesOrder" 
             var oModel = this.getOwnerComponent().getModel()
             var that = this
 
+            
             oModel.read(entity,{
                 success:function(odata, response){
+             //if data is present data is displayed it no data is displayed
+            // if "/BusinessPartnerSet('" + key + "')/ToSalesOrder" if api is wrong
+            //i.e instead of ToSalesOrders it is given ToSalesOrder it will display error.message
                     if(response.statusCode==="200" || response.statusText==="OK"){
                     // console.log(odata)
                     // console.log(response)
