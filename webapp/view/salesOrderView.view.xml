@@ -1,0 +1,71 @@
+<mvc:View controllerName="app.salesorderdisplay21.controller.salesOrderView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:tab="sap.ui.table">
+    <Page id="page" title="{i18n>title}">
+        <content>
+        <ComboBox items="{/BusinessPartnerSet}" selectionChange="onSelect" >
+            <items>
+            <!-- key at the backend and text at the ui -->
+                <core:Item key="{BusinessPartnerID}" text="{BusinessPartnerID}"></core:Item>
+            </items>
+        </ComboBox>
+        <tab:Table rows="{SOModel>/results}" selectionMode="Single" rowSelectionChange="onRowPress">
+				<tab:columns>
+					<tab:Column>
+						<tab:label>
+							<Label text="{i18n>id}"></Label>
+						</tab:label>
+						<!--template is used to make type of column like checkbox, input, text...-->
+						<tab:template>
+						
+							<Text text="{SOModel>CustomerID}"></Text>
+						</tab:template>
+					</tab:Column>
+					<tab:Column>
+						<tab:label>
+							<Label text="{i18n>name}"></Label>
+						</tab:label>
+						<tab:template>
+							<Text text="{SOModel>CustomerName}"></Text>
+							<!-- <Input value="{CustomerName}" required="true"></Input> -->
+							
+							<!--formatting-->
+							<!-- <Input value="{path:'xmlModel>empName', formatter:'.someVar.upperCase'}"></Input> -->
+							
+						</tab:template>
+					</tab:Column>
+					<tab:Column>
+						<tab:label>
+							<Label text="{i18n>curr}"></Label>
+						</tab:label>
+						<tab:template>
+							<Text text="{SOModel>CurrencyCode}"></Text>
+                            
+							<!-- <Text text="{danModel>empSalary},{danModel>currency}"></Text> -->
+							<!-- <Text text="{parts:[
+												{path:'xmlModel>empSal'},
+												{path:'xmlModel>currency'}
+											   ],
+										 formatter:'.someVar.formatCurrency'}"
+							></Text> -->
+						</tab:template>
+					</tab:Column>
+					<tab:Column>
+						<tab:label>
+							<Label text="{i18n>amt}"></Label>
+						</tab:label>
+						<tab:template>
+							<!-- <Text text="{GrossAmount}"></Text> -->
+                            <Text text="{SOModel>GrossAmount}"></Text>
+						</tab:template>
+					</tab:Column>
+						
+				</tab:columns>
+			</tab:Table>
+        <!-- we don't have a named model so direclty / -->
+        
+        </content>
+    </Page>
+</mvc:View>
