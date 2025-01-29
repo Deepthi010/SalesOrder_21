@@ -1,9 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
-    // "sap/m/MessageBox"
+     "sap/m/MessageBox"
 ],
-function (Controller,JSONModel) {
+function (Controller,JSONModel,MessageBox) {
     "use strict";
 
     return Controller.extend("app.salesorderdisplay21.controller.salesOrderView", {
@@ -14,7 +14,7 @@ function (Controller,JSONModel) {
             var oItem = oEvent.getParameter("selectedItem");
             var key = oItem.mProperties.key
             // /BusinessPartnerSet('0100000003')/ToSalesOrders
-            var entity = "/BusinessPartnerSet('" + key + "')/ToSalesOrders" 
+            var entity = "/BusinessPartnerSet('" + key + "')/ToSalesOrder" 
             var oModel = this.getOwnerComponent().getModel()
             var that = this
 
@@ -28,8 +28,9 @@ function (Controller,JSONModel) {
                     }
                 },
                 error:function(error){
-                    if(error.statusCode === "404" || error.statusText==="Not Found")
-                        sap.m.MessageBox.show(error.message)
+                    if(error.statusCode === "404" || error.statusText==="Not Found"){
+                       MessageBox.show(error.message)
+                    }
                 }
             })
 
