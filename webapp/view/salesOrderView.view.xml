@@ -65,7 +65,7 @@
 				</tab:columns>
 			</tab:Table>
         <!-- we don't have a named model so direclty / -->
-        
+        <Button text = "Submit"></Button>
         </content>
     </Page>
 </mvc:View>
